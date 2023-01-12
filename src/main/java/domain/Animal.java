@@ -13,50 +13,38 @@ public abstract class Animal {
         this.gender = gender;
         this.age = age;
         this.owner = owner;
+        owner.getAnimals().add(this);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public Owner getOwner() {
         return owner;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-        owner.getAnimals().add(this);
-    }
-
-    public String animalAndOwnerToString(){
-        return toString() + " \n have owner: " + owner.toString();
-    }
 
     @Override
     public String toString() {
-        return
-                "name='" + name +
+        return "name= " + name +
                 ", gender=" + gender +
-                ", age=" + age;
+                ", age=" + age +
+                ", owner:\n\t" + owner.toString();
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }

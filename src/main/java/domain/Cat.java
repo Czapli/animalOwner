@@ -13,8 +13,4 @@ public class Cat extends Animal {
     public String getSpecies() {
         return species;
     }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
 }

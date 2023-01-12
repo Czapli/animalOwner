@@ -4,24 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0f5e35c-4c86-4aed-a4af-703fe2689881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Animals.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Dog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Enums/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Enums/Type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Owner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Turtle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/OwnerRepository.java" afterDir="false" />
+    <list default="true" id="a0f5e35c-4c86-4aed-a4af-703fe2689881" name="Changes" comment="1.1 initial commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/AnimalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/OwnerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Logic/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/Descriptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/UserInteraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AnimalInMemoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AnimalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/OwnerInMemoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Animals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Enums/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Enums/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Enums/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Enums/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/Turtle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/OwnerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/OwnerRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -73,8 +76,25 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="Logic" />
+      <recent name="View" />
+      <recent name="repository" />
       <recent name="domain.Enums" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Animals" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Animals" />
+      <module name="animals" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Animals" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -86,6 +106,7 @@
       <updated>1673378908571</updated>
       <workItem from="1673378910802" duration="5177000" />
       <workItem from="1673386304703" duration="1628000" />
+      <workItem from="1673422975535" duration="33688000" />
     </task>
     <servers />
   </component>
@@ -102,5 +123,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.1 initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.1 initial commit" />
   </component>
 </project>
