@@ -40,6 +40,11 @@ public abstract class Animal {
     public String toString() {
         return "name= " + name +
                 ", gender=" + gender +
+                ", age=" + age;
+    }
+    public String animalAndOwnerToString() {
+        return "name= " + name +
+                ", gender=" + gender +
                 ", age=" + age +
                 ", owner:\n\t" + owner.toString();
     }

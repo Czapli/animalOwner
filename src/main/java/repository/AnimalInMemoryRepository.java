@@ -22,29 +22,34 @@ public class AnimalInMemoryRepository implements AnimalRepository {
 
     @Override
     public List<Animal> getByName(String nameFragment) {
-        return animalList.stream()
-                .filter(animal -> animal.getName().contains(nameFragment))
-                .collect(Collectors.toList());
-//    List<Animal> fragmentNameList = new ArrayList<>();
-//        for (Animal animal : animalList ) {
-//            if (animal.getName().toLowerCase().contains(nameFragment.toLowerCase())){
-//                fragmentNameList.add(animal);
-//            }
-//        }
-//        return fragmentNameList;
+        List<Animal> fragmentNameList = new ArrayList<>();
+        for (Animal animal : animalList) {
+            if (animal.getName().toLowerCase().contains(nameFragment.toLowerCase())) {
+                fragmentNameList.add(animal);
+            }
+        }
+        return fragmentNameList;
     }
 
     @Override
     public List<Animal> findByAge(int age) {
-        return animalList.stream()
-                .filter(animal -> animal.getAge() == age)
-                .collect(Collectors.toList());
+        List<Animal> animalsInAge = new ArrayList<>();
+        for (Animal animal : animalList) {
+            if (animal.getAge() == age) {
+                animalsInAge.add(animal);
+            }
+        }
+        return animalsInAge;
     }
 
     @Override
-    public List<Animal> findByOwner(String owner) {
-        return animalList.stream()
-                .filter(animal -> animal.getOwner().getFirstname().contains(owner))
-                .collect(Collectors.toList());
+    public List<Animal> findByOwner(String nameFragment) {
+        List<Animal> fragmentNameList = new ArrayList<>();
+        for (Animal animal : animalList) {
+            if (animal.getOwner().getFirstname().contains(nameFragment)) {
+                fragmentNameList.add(animal);
+            }
+        }
+        return fragmentNameList;
     }
 }

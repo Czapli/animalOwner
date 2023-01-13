@@ -2,6 +2,7 @@ package domain;
 
 import domain.Enums.Gender;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +44,10 @@ public class Owner {
     public String ownerAndAnimalToString() {
         StringBuilder animalList = new StringBuilder();
         if (animals.size() > 0) {
-            animals.forEach(animal -> animalList.append(animal));
-            return toString() + "\n is owner: " + animalList.toString();
+            for (Animal animal : animals) {
+                animalList.append(animal);
+            }
+            return toString() + "\n is owner: " + animalList;
         }
         return toString();
     }
@@ -57,20 +60,4 @@ public class Owner {
                 ", age: " + age;
     }
 
-    public int compareByFirstname(Owner o1) {
-        return this.getFirstname().compareTo(o1.getFirstname());
-    }
-
-    public int compareByAge(Owner o1) {
-        return this.getAge() - (o1.getAge());
-    }
-
-    public int compareByNumberOfPets(Owner o1) {
-        return this.getAnimals().size() - (o1.getAnimals().size());
-    }
-
-//    @Override
-//    public int compare(Owner o1, Owner o2) {
-//        return 0;
-//    }
 }

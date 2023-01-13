@@ -7,11 +7,16 @@ import domain.Enums.Gender;
 import domain.Enums.Type;
 import repository.AnimalInMemoryRepository;
 import repository.AnimalRepository;
+import repository.OwnerInMemoryRepository;
+import repository.OwnerRepository;
+
+import java.util.List;
 
 public class AnimalService {
-    AnimalRepository animalRepository = new AnimalInMemoryRepository();
-    Descriptions descriptions = new Descriptions();
-    Service service = new Service();
+    private AnimalRepository animalRepository = new AnimalInMemoryRepository();
+    private OwnerRepository ownerRepository = new OwnerInMemoryRepository();
+    private Descriptions descriptions = new Descriptions();
+    private Service service = new Service();
     int inputInt = 0;
 
     public void addNew() {
@@ -19,8 +24,7 @@ public class AnimalService {
         System.out.println("Insert name: ");
         String name = UserInteraction.input();
         Gender gender = service.getGender();
-        System.out.println("Insert age");
-        int age = UserInteraction.inputInt();
+        int age = service.getAge();
         System.out.println("Chose type of Pet:\n1-cat\n2-dog\n3-turtle");
         inputInt = UserInteraction.inputInt();
         switch (inputInt) {
@@ -34,7 +38,7 @@ public class AnimalService {
     private void addNewCat(String name, Gender gender, int age) {
         System.out.println("Insert species:");
         String species = UserInteraction.input();
-        Owner owner = service.getOwner(10);
+        Owner owner = getOwner(10,false);
         Animal cat = new Cat(name, gender, age, owner, species);
         animalRepository.save(cat);
     }
@@ -42,7 +46,7 @@ public class AnimalService {
     private void addNewDog(String name, Gender gender, int age) {
         System.out.println("Insert species:");
         String species = UserInteraction.input();
-        Owner owner = service.getOwner(15);
+        Owner owner = getOwner(15,false);
         Animal dog = new Dog(name, gender, age, owner, species);
         animalRepository.save(dog);
     }
@@ -61,28 +65,69 @@ public class AnimalService {
 
         } while (type == null);
         Owner owner = null;
-        if (type == Type.TORTOISE) owner = service.getOwner(20);
-        else if (type == Type.EMYD) owner = service.getOwner(25);
-        else if (type == Type.SEA_TURTLE) owner = service.getOwner(30);
+        switch (type) {
+            case TORTOISE -> owner = getOwner(20, false);
+            case EMYD -> owner = getOwner(25, false);
+            case SEA_TURTLE -> owner = getOwner(25, true);
+        }
         Turtle turtle = new Turtle(name, gender, age, owner, type);
-        if (turtle.getType() == Type.SEA_TURTLE && turtle.getOwner().getFirstname().charAt(0) == 'M') turtle.setOwner(null);
-        if (turtle.getOwner() != null) animalRepository.save(turtle);
-        else System.out.println("the owner does not meet the conditions");
+        animalRepository.save(turtle);
+    }
+    private Owner getOwner(int age, boolean isSeaTurtle) {
+        System.out.println("Assign owner from list:");
+        List<Owner> owners = ownerRepository.getOwners();
+        for (int i = 0; i < owners.size(); i++) {
+            System.out.println(i + " - " + owners.get(i).toString());
+        }
+        Owner owner = null;
+        do {
+            inputInt = UserInteraction.inputInt();
+            try {
+                Owner tempOwner = owners.get(inputInt);
+                if (tempOwner.getAnimals().size() < 3
+                        && tempOwner.getAge() >= age
+                        && !isSeaTurtle) {
+                    owner = tempOwner;
+                } else if(tempOwner.getAnimals().size() < 3
+                        && tempOwner.getAge() >= age
+                        && isSeaTurtle
+                        && tempOwner.getFirstname().charAt(0)=='M') {
+                    owner = tempOwner;
+                }
+                if (tempOwner.getAnimals().size() > 2) System.out.println("Owner has too many pets");
+                if (tempOwner.getAge() < age) System.out.println("Owner is too young");
+                if (isSeaTurtle && tempOwner.getFirstname().charAt(0)!='M') System.out.println("Owner first name must start on 'M'");
+            } catch (IndexOutOfBoundsException e) {
+                descriptions.badInput();
+            }
+        } while (owner == null);
+        return owner;
     }
 
-    public void printAll() {
-        animalRepository.getAll().forEach(System.out::println);
+    public List<Animal> getAll(){
+        return animalRepository.getAll();
+    }
+    public void printAll(List<Animal> animals) {
+        for (Animal animal : animals) {
+            System.out.println(animal.animalAndOwnerToString());
+        }
     }
 
     public void findByName() {
-        animalRepository.getByName(UserInteraction.input()).forEach(System.out::println);
+        System.out.println("Insert name");
+        List<Animal> animals = animalRepository.getByName(UserInteraction.input());
+        printAll(animals);
     }
 
     public void findByAge() {
-        animalRepository.findByAge(UserInteraction.inputInt()).forEach(System.out::println);
+        System.out.println("Insert age");
+        List<Animal> animals = animalRepository.findByAge(UserInteraction.inputInt());
+        printAll(animals);
     }
 
     public void findByOwnerName() {
-        animalRepository.findByOwner(UserInteraction.input()).forEach(System.out::println);
+        System.out.println("Insert owner first name");
+        List<Animal> animals = animalRepository.findByOwner(UserInteraction.input());
+        printAll(animals);
     }
 }
